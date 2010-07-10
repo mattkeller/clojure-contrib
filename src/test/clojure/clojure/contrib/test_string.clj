@@ -54,7 +54,8 @@
 
 (deftest t-replace-first
   (is (= "barbarfoo" (s/replace-first-re #"foo" "bar" "foobarfoo")))
-  (is (= "FOObarfoo" (s/replace-first-by #"foo" s/upper-case "foobarfoo"))))
+  (is (= "FOObarfoo" (s/replace-first-by #"foo" s/upper-case "foobarfoo")))
+  (is (= "foobar" (s/replace-first-by #"qux" s/upper-case "foobar"))))
 
 (deftest t-partition
   (is (= (list "" "abc" "123" "def")

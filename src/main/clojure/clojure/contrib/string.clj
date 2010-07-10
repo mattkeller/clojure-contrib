@@ -192,7 +192,8 @@
         (let [rep (f (re-groups m))]
           (.appendReplacement m buffer rep)
           (.appendTail m buffer)
-          (str buffer))))))
+          (str buffer))
+        s))))
 
 (defn partition
   "Splits the string into a lazy sequence of substrings, alternating
