@@ -24,22 +24,30 @@
 (deftest t-take
   (is (= "foo" (s/take 3 "foobar")))
   (is (= "foobar" (s/take 7 "foobar")))
-  (is (= "" (s/take 0 "foo"))))
+  (is (= "" (s/take 0 "foo")))
+  (is (thrown? NullPointerException (s/take 0 nil)))
+  (is (thrown? NullPointerException (s/take 1 nil))))
 
 (deftest t-drop
   (is (= "bar" (s/drop 3 "foobar")))
   (is (= "" (s/drop 9 "foobar")))
-  (is (= "foobar" (s/drop 0 "foobar"))))
+  (is (= "foobar" (s/drop 0 "foobar")))
+  (is (thrown? NullPointerException (s/drop 0 nil)))
+  (is (thrown? NullPointerException (s/drop 1 nil))))
 
 (deftest t-butlast
   (is (= "foob" (s/butlast 2 "foobar")))
   (is (= "" (s/butlast 9 "foobar")))
-  (is (= "foobar" (s/butlast 0 "foobar"))))
+  (is (= "foobar" (s/butlast 0 "foobar")))
+  (is (thrown? NullPointerException (s/butlast 0 nil)))
+  (is (thrown? NullPointerException (s/butlast 1 nil))))
 
 (deftest t-tail
   (is (= "ar" (s/tail 2 "foobar")))
   (is (= "foobar" (s/tail 9 "foobar")))
-  (is (= "" (s/tail 0 "foobar"))))
+  (is (= "" (s/tail 0 "foobar")))
+  (is (thrown? NullPointerException (s/tail 0 nil)))
+  (is (thrown? NullPointerException (s/tail 1 nil))))
 
 (deftest t-repeat
   (is (= "foofoofoo" (s/repeat 3 "foo"))))

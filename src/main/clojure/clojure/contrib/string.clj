@@ -107,6 +107,7 @@
 (defn #^String take
   "Take first n characters from s, up to the length of s."
   [n #^String s]
+  (when (nil? s) (throw (NullPointerException.)))
   (if (< (count s) n)
     s
     (.substring s 0 n)))
@@ -115,6 +116,7 @@
   "Drops first n characters from s.  Returns an empty string if n is
   greater than the length of s."
   [n #^String s]
+  (when (nil? s) (throw (NullPointerException.)))
   (if (< (count s) n)
     ""
     (.substring s n)))
@@ -123,6 +125,7 @@
   "Returns s without the last n characters.  Returns an empty string
   if n is greater than the length of s."
   [n #^String s]
+  (when (nil? s) (throw (NullPointerException.)))
   (if (< (count s) n)
     ""
     (.substring s 0 (- (count s) n))))
@@ -130,6 +133,7 @@
 (defn #^String tail
   "Returns the last n characters of s."
   [n #^String s]
+  (when (nil? s) (throw (NullPointerException.)))
   (if (< (count s) n)
     s
     (.substring s (- (count s) n))))
